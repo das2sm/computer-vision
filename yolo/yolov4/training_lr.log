@@ -1,0 +1,26 @@
+==========================================================
+  YOLOv4  |  Car / Traffic Sign Detection
+==========================================================
+  Dataset : /home/ace428/Soham/computer-vision/yolo/yolov4/car
+  Classes : 15
+
+[1/3] Converting annotations ...
+    train  : 3527 images  (3 skipped)  -> cardet_train.txt
+    valid  : 801 images  (0 skipped)  -> cardet_valid.txt
+    test   : 637 images  (1 skipped)  -> cardet_test.txt
+
+[2/3] Building config ...
+    Pretrained : yolov4.conv.137.pth
+
+[2/3] Training ...
+Traceback (most recent call last):
+  File "/home/ace428/Soham/computer-vision/yolo/yolov4/train_cardetection.py", line 374, in <module>
+    main()
+  File "/home/ace428/Soham/computer-vision/yolo/yolov4/train_cardetection.py", line 365, in main
+    run_training(cfg, args.gpu)
+  File "/home/ace428/Soham/computer-vision/yolo/yolov4/train_cardetection.py", line 169, in run_training
+    import torch
+  File "/home/ace428/miniconda3/envs/yolo_env/lib/python3.9/site-packages/torch/__init__.py", line 416, in <module>
+    from torch._C import *  # noqa: F403
+  File "<frozen importlib._bootstrap>", line 203, in _lock_unlock_module
+KeyboardInterrupt

@@ -410,6 +410,7 @@ def train(model, device, config, epochs=5, batch_size=1, save_cp=True, log_step=
                                           scheduler.get_lr()[0] * config.batch))
 
                 pbar.update(images.shape[0])
+            print(f"Epoch loss: {loss.item():.4f} | xy: {loss_xy.item():.4f} | wh: {loss_wh.item():.4f} | obj: {loss_obj.item():.4f} | cls: {loss_cls.item():.4f}")
 
             if config.use_darknet_cfg:
                 eval_model = Darknet(config.cfgfile, inference=True)
