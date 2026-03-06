@@ -95,7 +95,7 @@ def convert_split(dataset_root: Path, split: str, out_txt: Path):
             y1 = max(0, int((cy - bh / 2) * h))
             x2 = min(w, int((cx + bw / 2) * w))
             y2 = min(h, int((cy + bh / 2) * h))
-            if x2 > x1 and y2 > y1:
+            if x2 > x1 and y2 > y1 and bw > 0.02 and bh > 0.02:
                 boxes.append(f"{x1},{y1},{x2},{y2},{cls_id}")
 
         if boxes:
@@ -147,8 +147,8 @@ def make_config(train_txt: Path, val_txt: Path, args):
     cfg.burn_in        = 0
     cfg.checkpoints    = "checkpoints_cardetection"
 
-    # ── augmentation (light augmentation is fine for real training) ──────────
-    cfg.mosaic         = 1
+    # ── augmentation ─────────────────────────────────────────────────────────
+    cfg.mosaic         = 0
     cfg.cutmix         = 0
     cfg.mixup          = 0
     cfg.jitter         = 0.2

@@ -318,47 +318,36 @@
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000783_jpg.rf.0f12070feb6f7bc91c48aa93a65d2e93.jpg 221,16,320,204,13
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000786_jpg.rf.60798d12643d9be450731115c76bd86c.jpg 298,17,354,67,13
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000790_jpg.rf.ddb1d679830f7cafbcbec2013a6ff2fc.jpg 268,6,369,72,13
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000792_jpg.rf.3899b0ef3229b4f18a7954698cc40c92.jpg 149,81,156,113,0 245,95,252,121,0 138,81,146,113,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000797_jpg.rf.3d78d9d11140e03357ddde30e7e7e98e.jpg 147,68,288,313,7
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000808_jpg.rf.8007590175a593bc5b4408a31ade3f3a.jpg 223,83,229,113,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000809_jpg.rf.dcd99922c592f3b634ddb443bf40dce1.jpg 136,44,145,83,1 224,34,235,72,1 233,42,246,70,7
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000811_jpg.rf.142d78a345147dc179446aa8ec1191ce.jpg 124,107,129,131,1 206,104,212,128,1 195,111,202,125,7
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000815_jpg.rf.29afabe5f464c19bf77856ba5a90bd1e.jpg 219,171,312,306,8
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000822_jpg.rf.63b8e6ec737487b4e7e9e2ed48754226.jpg 250,276,292,337,13
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000825_jpg.rf.dd850d3ac847bd61179c2191ebc02b37.jpg 115,99,119,120,1 127,99,131,120,1 256,98,260,115,1 265,97,271,117,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000831_jpg.rf.09392428bf69f0de8c937caec3590319.jpg 192,124,228,195,7
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000833_jpg.rf.a774fb7c4620c050e43d66a0062137af.jpg 293,152,321,217,11
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000836_jpg.rf.c262dc2f875c2d27c5358091bec7f23c.jpg 337,3,395,109,13
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000841_jpg.rf.82ac37a263cc3771094f878f75519d3c.jpg 236,164,357,342,7
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000854_JPG_jpg.rf.c2dbb2abedf6e49d74effc7a8945ed99.jpg 0,166,31,181,0 331,120,364,134,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000860_jpg.rf.96ab0958df78e7af07071f6d1dd7b6e6.jpg 119,81,125,105,1 297,75,303,100,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000866_JPG_jpg.rf.585d575b53d2e6e316c8abb2d07e4c17.jpg 128,108,176,131,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000867_JPG_jpg.rf.0961b153fd2cdd7f71455ca70b9226fc.jpg 127,36,186,60,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000872_JPG_jpg.rf.618811525dae8c1799c5093046e551c5.jpg 199,77,237,98,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000883_JPG_jpg.rf.bcfbe7999ec1b4e660a155e0e145e234.jpg 110,85,143,103,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000887_jpg.rf.307baae87436b41df5a8a47635940201.jpg 135,90,139,113,1 211,81,215,105,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000897_JPG_jpg.rf.d8616645e7ae5a674caf3f2e17dab345.jpg 177,51,238,81,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000898_JPG_jpg.rf.89de33253d01e0308735dc746aa4977f.jpg 183,107,216,121,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000899_JPG_jpg.rf.44b9967b6405c6ad4f9ad7dfa2ad610d.jpg 250,122,292,140,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000902_jpg.rf.f1be11af53a854bf0f07539ef71bfab7.jpg 215,80,219,101,1 222,81,226,100,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000908_JPG_jpg.rf.d4876c6a6657b36ba6b1c1626df8123d.jpg 61,57,108,78,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000922_JPG_jpg.rf.143f5b1a97d934ec4a71114055fa5a0b.jpg 168,46,275,78,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000923_JPG_jpg.rf.f4e893778e08329a2b43abaef002f29e.jpg 110,95,147,115,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000934_JPG_jpg.rf.81031f117e2b4ac8b19c0cbe3bdd1d99.jpg 137,55,186,75,0 250,195,268,206,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000935_jpg.rf.a73778e8e15369b4706431ac25671fb4.jpg 207,117,212,137,0 218,116,223,138,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000936_jpg.rf.66c50dea6603f9ecc83f8b79c88a2f54.jpg 243,384,251,412,1 260,381,267,412,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000938_JPG_jpg.rf.bf51e9c0b4a1d133c3e73bf56c2d2062.jpg 128,67,176,91,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000941_JPG_jpg.rf.9afc696caf8c7db27bf2134dd5660a27.jpg 128,62,174,87,0 67,124,92,138,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000944_JPG_jpg.rf.a0b81118199b4d11ccb859c15d0cb1f6.jpg 88,28,154,57,0 169,151,202,165,0 180,181,221,191,0 251,212,275,220,0
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000944_JPG_jpg.rf.a0b81118199b4d11ccb859c15d0cb1f6.jpg 88,28,154,57,0 169,151,202,165,0 180,181,221,191,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000945_JPG_jpg.rf.ad79e318355923e68a10f1678fe9b6bf.jpg 349,346,395,361,0 212,289,286,305,0 189,238,248,263,0 32,33,156,75,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000946_JPG_jpg.rf.d747fd05b21ff8ac85c05629986ae344.jpg 145,81,190,102,0 11,60,40,91,9
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000946_jpg.rf.18bf1b977f56cc49545942b86ac7c739.jpg 26,343,34,386,0 213,330,223,373,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000949_JPG_jpg.rf.dffe53a303ce089bd4001a13de0cc7bd.jpg 49,26,184,83,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000954_JPG_jpg.rf.2633035aaeb19e6f2005bf2f8f5d3ebd.jpg 172,94,224,113,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000959_jpg.rf.5bf1b1614cead2ae3ed908c0373143c1.jpg 158,112,163,133,0 213,110,218,129,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000961_jpg.rf.805df5d6f453caa3c1fa8a87893ec991.jpg 178,99,183,120,0 217,99,223,117,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000966_JPG_jpg.rf.87fa55fbebc4989000b890b88765c712.jpg 91,42,131,62,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000967_jpg.rf.c03a4af67b2c09d534327ef7de40de4c.jpg 262,22,272,60,1 331,17,332,20,1
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000967_jpg.rf.c03a4af67b2c09d534327ef7de40de4c.jpg 262,22,272,60,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000983_JPG_jpg.rf.435a52389bec50fc37b8d83dc287f3ed.jpg 81,170,124,180,0 183,8,304,39,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000985_JPG_jpg.rf.858faffcae4167e233b829d2f744f34f.jpg 101,35,162,58,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/000989_JPG_jpg.rf.190d2ec887677882e3d1c869a542aa26.jpg 137,52,218,80,0 103,236,120,247,0
@@ -371,11 +360,10 @@
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001028_jpg.rf.7a77036407cf037c2415b436fde7826b.jpg 283,54,333,122,3
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001031_jpg.rf.2b5fd42d6b8a7d445183a468803e57b9.jpg 187,86,264,204,3
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001035_jpg.rf.8bb44e874531b88eb7bdff9082c78a43.jpg 174,74,334,296,3
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001049_jpg.rf.e527b2a1edfb88b1fbfb9542d33a9a27.jpg 134,61,142,93,0 226,55,234,85,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001051_jpg.rf.bb8152d7d7c35ed73bfc9239185f9087.jpg 90,94,117,134,3 183,89,209,131,3 274,89,301,129,12
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001057_jpg.rf.0d8f858b7a9c12830691348e2ae306af.jpg 68,62,270,179,3
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001059_jpg.rf.2b325fd15e28d0c622610dea63c2c12f.jpg 68,184,144,302,3
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001066_jpg.rf.c55d7313f5d62858191ae315c7fada73.jpg 142,46,150,81,1 222,38,230,73,1
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001066_jpg.rf.c55d7313f5d62858191ae315c7fada73.jpg 222,38,230,73,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001068_jpg.rf.371ec28b0d2bbbd16c8a645be41f5a76.jpg 79,24,88,67,1 225,17,236,58,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001082_jpg.rf.6b7fc1c9648c1a3494a137ffa3664be1.jpg 284,55,332,126,3
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/001089_jpg.rf.004c591c5855cf05e2198a5e21c8ab56.jpg 166,197,256,369,3
@@ -454,68 +442,28 @@
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/27beeb65-e6ea-4c4a-9dea-597500f26e7f_jpg.rf.29ca4c588d77178889b70d59993eb0ff.jpg 80,17,376,369,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/643854b9-b9d9-4b74-99fb-830fde4a0b74_jpg.rf.4d252deec56db095b1acab7c1c0f1bdc.jpg 83,46,363,382,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00000_png.rf.51e7c2d131818f5ac51613cb3d152380.jpg 246,218,255,233,14
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00005_png.rf.2c3a5ef517c817ce7872439ac76a7c08.jpg 179,224,183,229,6 261,215,274,233,14
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00012_png.rf.72d6e678caad674f4fe8c948471cf743.jpg 130,206,144,225,2 250,217,258,228,2
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00005_png.rf.2c3a5ef517c817ce7872439ac76a7c08.jpg 261,215,274,233,14
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00012_png.rf.72d6e678caad674f4fe8c948471cf743.jpg 130,206,144,225,2
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00018_png.rf.765c48e66c9a0a7d70f6e4b0af00494c.jpg 261,207,272,225,2 121,213,130,225,6
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00021_png.rf.703e3c27438f8fe990ef8ffbd48f2b51.jpg 142,215,149,226,6 188,211,191,213,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00022_png.rf.783465f75a2393c7aaa0ec3c3cd3ed4d.jpg 136,213,145,226,6
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00023_png.rf.cd1aa333b9e78ad2f7b2de3c154e7429.jpg 187,210,190,212,0 130,211,139,226,6
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00023_png.rf.cd1aa333b9e78ad2f7b2de3c154e7429.jpg 130,211,139,226,6
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00027_png.rf.dfb965799faeb1514f927e69c5ec0fd2.jpg 91,199,103,222,6
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00028_png.rf.f6f0a58dd52d1cf0fe75c8496a37b067.jpg 79,195,88,220,6
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00036_png.rf.a4fcf0fd896e50b389c7a93fae4d3a07.jpg 236,211,247,227,7
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00041_png.rf.402d963ad90df5846463e66a301debd3.jpg 182,204,185,207,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00089_png.rf.3a437fe3f7f2a546183b5ef50bf92eab.jpg 104,120,114,127,0 128,222,131,227,7 180,202,183,205,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00095_png.rf.7339640275f9c4483536f89fb2c815e0.jpg 110,219,114,226,7
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00097_png.rf.fb72097a4038b905024bea71b14c1434.jpg 103,218,106,225,7 175,197,179,200,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00098_png.rf.937d582ee38fb9c9007c37c872df3176.jpg 175,197,179,200,1 99,218,102,225,7
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00100_png.rf.683a106328c4647fb8dcd00c1c2af90f.jpg 89,216,94,223,7
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00104_png.rf.4b7fdfa8ad94152180492a204dfd629d.jpg 144,210,155,226,11
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00142_png.rf.def6aeee07cff082ea33cd3d659e7024.jpg 247,223,250,229,9 232,226,235,230,9
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00150_png.rf.59de5a3cfa738990cf21ba7d18b79444.jpg 147,214,155,226,13
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00151_png.rf.ff1355b3e842019c0228380552ea0c2c.jpg 142,212,152,226,13
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00153_png.rf.19444df592470cf02432f62dfd784f12.jpg 242,224,245,229,9 273,217,278,226,9
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00154_png.rf.be661e0bba8aead34dbcded1d4e5b260.jpg 276,217,283,226,9 243,224,247,229,9
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00194_png.rf.21c8dbe947c18776eaab4e5caec1585b.jpg 128,224,131,227,10 145,200,149,202,1 131,200,134,202,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00195_png.rf.c958e21bb68e76adac7817623d7c1f75.jpg 187,155,196,162,0 225,161,235,169,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00202_png.rf.ee30ccd577d5cfc9c2f6c16edaeacdf2.jpg 205,121,218,130,0 261,132,270,140,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00204_png.rf.19edfa32d48b66e0365f54c7325dcbd4.jpg 212,106,227,113,0 274,118,286,127,0
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00202_png.rf.ee30ccd577d5cfc9c2f6c16edaeacdf2.jpg 205,121,218,130,0
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00204_png.rf.19edfa32d48b66e0365f54c7325dcbd4.jpg 274,118,286,127,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00211_png.rf.4d937346689834589353be2d154dc924.jpg 225,25,251,47,0 319,67,334,84,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00230_png.rf.0abfb32b639a38aefee3263df7d3733e.jpg 221,178,239,187,1 290,184,304,191,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00230_png.rf.de641278e85b0675e5c4ec40b2fdf74f.jpg 125,210,134,223,10 176,154,186,159,1 204,210,212,214,0 136,156,144,163,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00239_png.rf.d6a3e883bbb92412f2642432771f2d09.jpg 185,99,200,111,1 128,118,140,128,1 231,206,240,213,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00257_png.rf.fd48c32db227dac063bcd71340f4f334.jpg 289,218,291,223,0 307,187,318,191,0 258,223,260,226,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00282_png.rf.8432bcb7705139cd0bcd1421987aaff7.jpg 159,225,161,229,11 195,221,196,226,1 246,215,249,223,0 336,213,342,221,13
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00283_png.rf.e88cf39eb00a52dfcceb2fcfddf89260.jpg 157,225,159,229,11 194,221,196,226,1 246,215,249,223,0 342,211,348,221,13
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00285_png.rf.cbc33d5d21aad4b5d0d195479cb4f9ef.jpg 354,209,360,219,13 247,213,251,223,0 193,221,195,226,1 153,225,156,229,11
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00298_png.rf.a4bc4257abfe5a5f97a7ab4671d5a682.jpg 257,203,263,218,0 178,218,181,225,1 117,221,121,226,11
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00302_png.rf.89395bab7d8fb4a6da3324a58b3497cd.jpg 267,198,273,214,0 174,217,176,224,1 102,219,106,225,11
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00314_png.rf.f10aa9e570183b2892515007c415b9cf.jpg 52,208,58,219,11 177,212,179,222,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00315_png.rf.14c625eca5ff0f371a2459cb470b6dd5.jpg 48,207,53,218,11
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00351_png.rf.0c9f77a62c69eb9b4b91da5b1454eda5.jpg 88,219,91,223,13 182,225,185,229,12
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00364_png.rf.a9a2ae260182758dd32759d27a3f08ae.jpg 214,222,219,229,12 75,215,79,223,13
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00382_png.rf.da9f23f9bb25ab0a204cb881a5ccf798.jpg 20,202,25,212,13
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00454_png.rf.69544c267e97e6de7d8ff36d70f8a8f6.jpg 330,214,335,222,3 281,191,285,193,0 301,200,304,202,0
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00230_png.rf.0abfb32b639a38aefee3263df7d3733e.jpg 221,178,239,187,1
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00230_png.rf.de641278e85b0675e5c4ec40b2fdf74f.jpg 125,210,134,223,10
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00239_png.rf.d6a3e883bbb92412f2642432771f2d09.jpg 185,99,200,111,1 128,118,140,128,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00471_png.rf.eb0a04fb4ec3ae41bf4b96e27bd5d26d.jpg 135,172,147,208,0 209,172,223,209,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00476_png.rf.9039468fbc1dab58476b697e479807f8.jpg 211,131,233,192,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00479_png.rf.f7e77b725ba1e70b5dc8b0697e0b1f92.jpg 206,172,212,175,0 385,203,391,214,3
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00480_png.rf.ff94615495e0c4eb7cd3a1cfce3cf2cd.jpg 393,200,398,213,3 205,170,213,173,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00509_png.rf.a4fdcf5053bc422a3b30b4cef69e5ea6.jpg 205,128,217,138,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00587_png.rf.8f637c2480c931d014f8cc2877541abd.jpg 261,203,265,205,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00594_png.rf.dc0e60f4633360af03461b14c31a1454.jpg 214,225,218,229,4 259,199,262,202,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00600_png.rf.99bc40dcb86cb45b4425a2604dd3cd8d.jpg 204,224,208,229,4
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00604_png.rf.fd483074d74e8bee0d71bb87e77ab3ef.jpg 194,222,199,229,4 249,194,253,196,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00615_png.rf.6b8b9a4df61e83d15119053ea613f434.jpg 136,211,146,226,4
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_00631_png.rf.ef7fde7123c71d075628496a468eb1df.jpg 207,141,218,147,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01013_png.rf.9464970b75fa02363baae3c682e99f39.jpg 221,211,226,214,0 234,211,239,213,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01026_png.rf.dfb591570ded3c052e6641cb4f2d80c1.jpg 163,203,169,207,0 180,205,187,209,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01037_png.rf.870a2a09f0f8cb2a0b5f4a4a3b3ccadc.jpg 125,190,134,196,0 150,193,158,198,0
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01082_png.rf.da2e5bebfb023e66aacd368902a130ef.jpg 330,203,335,214,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01086_png.rf.dd1b44b6d6e2e2da3f3f6ab8f823bc01.jpg 321,202,326,214,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01090_png.rf.663e34306a969d1e2d3f1ca290e1ddd7.jpg 311,201,316,215,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01098_png.rf.e141b30ac0a11cc0c857435f655656fc.jpg 333,192,339,209,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01099_png.rf.d3e2606bc19452ecaec7548723f05a0b.jpg 337,189,343,207,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01104_png.rf.1c0a4fa66929930288c5ff6e293ca501.jpg 353,179,362,201,1
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/FisheyeCamera_1_01147_png.rf.4b377ccbafe830dd921c6b606ab4f94a.jpg 178,167,185,173,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/b413caec-028d-48e6-922b-fc63db1b7ebb_jpg.rf.259a6b31980f35168c8ec00a5e80c263.jpg 73,22,359,372,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road104_png.rf.4468adcd7c2dcfc04377146de785c0a6.jpg 52,23,353,391,11
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road108_png.rf.9655ebb7a27af56ab1d0360d10685ec8.jpg 181,216,194,238,9
@@ -523,7 +471,7 @@
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road112_png.rf.b765c2b5d3a2145d317b0ceadfb08464.jpg 140,19,281,231,5
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road11_png.rf.40b76142a629faa238c042bcb209cc27.jpg 196,136,216,185,0 332,239,347,278,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road157_png.rf.e48c88408b366592b950018ee5d6426d.jpg 278,68,325,104,8
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road16_png.rf.9aba07c7ac70aab405028e7e8a750fb7.jpg 236,73,251,139,1 239,298,246,316,1
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road16_png.rf.9aba07c7ac70aab405028e7e8a750fb7.jpg 236,73,251,139,1
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road196_png.rf.6aa5da1b76ad6487d317d27963cc00d1.jpg 186,97,280,166,8
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road19_png.rf.05e1657af2361aab3c4d5deb43b29087.jpg 151,106,192,165,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road243_png.rf.555053220adbac3849def1e4105008fd.jpg 212,246,226,262,3 192,246,209,261,12
@@ -559,7 +507,7 @@
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road422_png.rf.9b9d58bbb154a5b030ff2addac608ef8.jpg 136,213,161,230,13
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road431_png.rf.4cf451707a1af9d139094513881b7654.jpg 34,220,114,280,13
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road439_png.rf.3a8f1ca30bf60d80f05733e8d83212d9.jpg 72,304,143,358,13
-/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road43_png.rf.c576096fc5f0b00379321f94ddffcbc6.jpg 183,124,198,173,0 91,134,108,181,0 10,144,27,189,0 274,203,287,238,0 341,199,355,237,0 215,293,220,307,1 233,293,237,305,1 249,293,254,307,1 268,292,273,308,1 297,311,303,322,1
+/home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road43_png.rf.c576096fc5f0b00379321f94ddffcbc6.jpg 183,124,198,173,0 91,134,108,181,0 10,144,27,189,0 274,203,287,238,0 341,199,355,237,0
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road446_png.rf.f38afaa2d572c8426b05a88bdb4a5d3d.jpg 171,116,266,185,13
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road450_png.rf.4066ba8e8ac659692b69cbcf144c575f.jpg 168,161,234,209,10
 /home/ace428/Soham/computer-vision/yolo/yolov4/car/test/images/road453_png.rf.2ac6332c02e34b01f38bd0daf2dee199.jpg 132,151,244,245,10
