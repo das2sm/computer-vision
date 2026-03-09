@@ -268,7 +268,7 @@ class Yolo_loss(nn.Module):
             loss_cls += F.binary_cross_entropy(input=output[..., 5:], target=target[..., 5:], reduction='sum')
             loss_l2 += F.mse_loss(input=output, target=target, reduction='sum')
 
-        loss = loss_xy + loss_wh + loss_obj + loss_cls
+        loss = loss_xy + loss_wh + loss_obj + 2.0 * loss_cls
 
         return loss, loss_xy, loss_wh, loss_obj, loss_cls, loss_l2
 

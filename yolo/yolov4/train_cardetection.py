@@ -43,6 +43,8 @@ def get_args():
     p.add_argument("--nms",        type=float, default=0.4,  help="NMS IoU threshold")
     p.add_argument("--pretrained", type=str, default="yolov4.conv.137.pth",
                                               help="Pretrained backbone weights")
+    p.add_argument("--resume",     type=str, default=None,
+                   help="Path to checkpoint to resume from")
     p.add_argument("--skip-train", action="store_true",   help="Skip to inference only")
     p.add_argument("--test-split", type=str, default="valid",
                                    choices=["train", "valid", "test"],
@@ -165,7 +167,7 @@ def make_config(train_txt: Path, val_txt: Path, args):
 # ---------------------------------------------------------------------------
 # Step 3 – train
 # ---------------------------------------------------------------------------
-def run_training(cfg, gpu: int):
+def run_training(cfg, gpu: int, resume: str = None):
     import torch
     from models import Yolov4
     from train import train
@@ -186,6 +188,14 @@ def run_training(cfg, gpu: int):
         n_classes=cfg.classes,
         inference=False,
     )
+
+    if resume:
+        print(f"    Resuming from: {resume}")
+        state = torch.load(resume, map_location=device)
+        if all(k.startswith("module.") for k in state):
+            state = {k[7:]: v for k, v in state.items()}
+        model.load_state_dict(state)
+
     model.to(device)
 
     train(
@@ -362,7 +372,7 @@ def main():
 
     if not args.skip_train:
         print(f"\n[2/3] Training ...")
-        run_training(cfg, args.gpu)
+        run_training(cfg, args.gpu, resume=args.resume)
 
     print(f"\n[3/3] Inference on '{args.test_split}' split ...")
     run_inference(dataset_root, args.test_split, cfg, args.gpu, args.conf, args.nms)
