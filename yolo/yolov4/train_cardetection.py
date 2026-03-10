@@ -196,6 +196,14 @@ def run_training(cfg, gpu: int, resume: str = None):
             state = {k[7:]: v for k, v in state.items()}
         model.load_state_dict(state)
 
+    # Freeze backbone, only train head
+    # for name, param in model.named_parameters():
+    #     if not name.startswith("head"):
+    #         param.requires_grad = False
+    # trainable = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    # total = sum(p.numel() for p in model.parameters())
+    # print(f"    Frozen backbone: training {trainable:,} / {total:,} params (head only)")
+
     model.to(device)
 
     train(
