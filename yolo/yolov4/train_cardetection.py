@@ -295,9 +295,9 @@ def run_inference(dataset_root: Path, split: str, cfg, gpu: int,
             pred_classes = []
             if det_list is not None:
                 for d in det_list:
-                    # det format: [x1, y1, x2, y2, conf, cls]
-                    if len(d) >= 6:
-                        c = int(d[5])
+                    # det format: [x1, y1, x2, y2, obj_conf, cls_conf, cls_id]
+                    if len(d) >= 7:
+                        c = int(d[6])
                         if 0 <= c < NUM_CLASSES:
                             pred_classes.append(c)
                             class_pred[c] += 1

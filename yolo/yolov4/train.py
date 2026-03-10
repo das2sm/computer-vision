@@ -232,13 +232,7 @@ class Yolo_loss(nn.Module):
         return obj_mask, tgt_mask, tgt_scale, target
 
     def forward(self, xin, labels=None):
-        device = xin[0].device
-        loss    = torch.tensor(0.0, device=device)
-        loss_xy = torch.tensor(0.0, device=device)
-        loss_wh = torch.tensor(0.0, device=device)
-        loss_obj= torch.tensor(0.0, device=device)
-        loss_cls= torch.tensor(0.0, device=device)
-        loss_l2 = torch.tensor(0.0, device=device)
+        loss, loss_xy, loss_wh, loss_obj, loss_cls, loss_l2 = 0, 0, 0, 0, 0, 0
         
         for output_id, output in enumerate(xin):
             batchsize = output.shape[0]
@@ -272,19 +266,10 @@ class Yolo_loss(nn.Module):
                                               weight=tgt_scale * tgt_scale, reduction='sum')
             loss_wh += F.mse_loss(input=output[..., 2:4], target=target[..., 2:4], reduction='sum') / 2
             loss_obj += F.binary_cross_entropy(input=output[..., 4], target=target[..., 4], reduction='sum')
-
-            # Focal loss on positive anchors only
-            pos_mask = tgt_mask[..., 0].bool()  # [batch, anchors, fsize, fsize]
-            if pos_mask.any():
-                cls_pred_pos = output[pos_mask][..., 5:]   # [num_pos, n_classes]
-                cls_tgt_pos  = target[pos_mask][..., 5:]   # [num_pos, n_classes]
-                bce     = F.binary_cross_entropy(cls_pred_pos, cls_tgt_pos, reduction='none')
-                p_t     = cls_tgt_pos * cls_pred_pos + (1 - cls_tgt_pos) * (1 - cls_pred_pos)
-                focal_w = (1 - p_t) ** 2.0
-                loss_cls += (focal_w * bce).sum()
-
+            loss_cls += F.binary_cross_entropy(input=output[..., 5:], target=target[..., 5:], reduction='sum')
             loss_l2 += F.mse_loss(input=output, target=target, reduction='sum')
-        loss = loss_xy + loss_wh + loss_obj + 2.0 * loss_cls
+        
+        loss = loss_xy + loss_wh + loss_obj + loss_cls
         return loss, loss_xy, loss_wh, loss_obj, loss_cls, loss_l2
 
 

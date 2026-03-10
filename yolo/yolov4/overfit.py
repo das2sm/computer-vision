@@ -32,6 +32,7 @@ def get_args():
     p.add_argument("--lr",         type=float, default=1e-3, help="Learning rate")
     p.add_argument("--conf",       type=float, default=0.25, help="Confidence threshold")
     p.add_argument("--nms",        type=float, default=0.4,  help="NMS IoU threshold")
+    p.add_argument("--resume",     type=str, default=None, help="Path to checkpoint to resume from")
     p.add_argument("--skip-train", action="store_true",  help="Skip to inference only")
     return p.parse_args()
 
@@ -160,7 +161,7 @@ def make_config(train_txt: Path, args):
 # ---------------------------------------------------------------------------
 # Step 3 – train by calling train() from train.py directly
 # ---------------------------------------------------------------------------
-def run_training(cfg, gpu: int):
+def run_training(cfg, gpu: int, resume: str = None):
     import torch
     from models import Yolov4
     from train import train   # the actual train() function in the repo
@@ -180,6 +181,15 @@ def run_training(cfg, gpu: int):
         n_classes=cfg.classes,
         inference=False,
     )
+
+    if resume:
+        print(f"    Resuming from: {resume}")
+        state = torch.load(resume, map_location=device)
+        if all(k.startswith("module.") for k in state):
+            state = {k[7:]: v for k, v in state.items()}
+        model.load_state_dict(state)
+        print(f"    Checkpoint loaded successfully\n")
+
     model.to(device)
 
     # train(model, device, config, epochs, batch_size, save_cp, log_step, img_scale)
@@ -308,7 +318,7 @@ def main():
 
     if not args.skip_train:
         print(f"\n[2/3] Training ...")
-        run_training(cfg, args.gpu)
+        run_training(cfg, args.gpu, resume=args.resume)
 
     print("\n[3/3] Inference ...")
     run_inference(coco128_root, cfg, args.gpu, args.conf, args.nms)
