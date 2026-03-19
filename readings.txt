@@ -1,0 +1,91 @@
+DETR (2020) — your first transformer paper, detection with attention
+Attention Is All You Need (2017) — read this alongside DETR, not before
+
+Read DETR before Attention Is All You Need — DETR gives you motivation, then the original transformer paper makes more sense.
+
+Stage 3 — 2D detection to 3D detection
+
+DETR3D (2021) — 3D detection with transformers, key paper
+
+Stage 4 — BEV foundations (2-3 weeks)
+
+LSS / Lift Splat Shoot (2020) — how cameras project to BEV, read this carefully
+nuScenes dataset paper (2019) — read early, this is the benchmark for everything
+BEVFormer (2022) — the most important BEV paper, read twice
+
+Spend extra time on BEVFormer. Every subsequent paper either builds on it or reacts to it.
+
+Stage 5 — Occupancy (2-3 weeks)
+
+MonoScene (2022) — monocular occupancy, simplest formulation
+TPVFormer (2023) — tri-perspective view, read after MonoScene
+VoxFormer (2023) — sparse voxel transformer
+SurroundOcc (2023) — multi-camera occupancy
+OccNet / Scene as Occupancy (2023) — defines the benchmark
+FlashOcc (2023) — efficient occupancy, good for deployment mindset
+SparseOcc (2024) — sparse representation, current direction
+
+Stage 6 — BEV fusion and SparseDrive (2 weeks)
+
+BEVFusion (2022, MIT) — camera + LiDAR fusion in BEV
+SparseBEV (2023) — sparse attention in BEV
+SparseDrive (2024) — end-to-end autonomous driving, now you're ready
+
+
+Parallel reading — do these alongside everything:
+
+PointPillars (2019) — if your project involves LiDAR
+SECOND (2018) — sparse convolutions, comes up everywhere
+
+----------------------------------------------------------------------
+DETR:
+- Gets rid of anchors and NMS
+- Bipartite matching, Hungarian Algorithm
+- CNN, Transformer
+- Different from what's shown in transformer paper as there is no "order" in
+  images as there is in language - no masking needed - inference as well as
+  training is done in parallel
+- Transformer is permutation invariant - fixed positional encodings are needed to know where something is - added to each layer - added to encoder
+- Also, different positional embeddings, object queries - learned - to know
+  where specific things are in the image - added to input of each layer in decoder
+- Disadvantage - slow convergence, improved upon by deformable DETR
+
+
+Transformers:
+- Attention(Q, K, V) is scaled by 1/sqrt(dk) as Q . K makes the variance dk
+  instead of 1. To scale the variance back to 1, we divide by sqrt(dk) as
+  Var(X / a) = Var(x) / a^2
+- Transformer self-drawn architecture
+- Positional encoding: different sin/cos values for each dimension - change
+  at different speeds - combination creates unique encoding, also helps dete
+  rmine relative positions, closer positions are more relative, regardless of actual position in the full thing
+
+
+DETR3D:
+Summary of the Flow:
+3D Queries (The "Detectives" with 3D coordinates) -> FIRST
+Project to 2D (The "Map" to the camera images)
+Collect 2D Features (The "Evidence" from the pixels)
+Predict 3D Boxes (The "Verdict") -> LAST
+
+Bilinear Interpolation:
+Accurate Feature Alignment: It ensures that the query accurately captures
+visual information from the 2D feature maps, even when the projection falls
+between pixels (float values), which is essential for accurate 3D object localization.
+
+By using the Homogeneous Counterpart c*li = cli <append> 1 (to match
+dimensions when going from 3D to 2D),
+clmi = Tm x c*li (clmi - projection of reference point onto m-th camera)
+and camera matrices, the model can sample features from multiple cameras simultaneously. If a car is split across the "Front" and "Front-Left" cameras, DETR3D naturally stitches those features together in 3D space.
+
+Uses focal loss and L1 loss
+
+
+LSS:
+In prior work, detections were fused - not end to end/differentiable - thus
+not learned fusion
+"It also means backpropagation cannot be
+used to automatically improve the perception system using feedback from the
+downstream planner."
+In LSS, features are fused instead of detections
+
