@@ -7,15 +7,22 @@ Stage 3 — 2D detection to 3D detection
 
 DETR3D (2021) — 3D detection with transformers, key paper
 
-Stage 4 — BEV foundations (2-3 weeks)
+Stage 4 — BEV foundations
 
 LSS / Lift Splat Shoot (2020) — how cameras project to BEV, read this carefully
 nuScenes dataset paper (2019) — read early, this is the benchmark for everything
+nuScenes revisited (2025)
 BEVFormer (2022) — the most important BEV paper, read twice
 
 Spend extra time on BEVFormer. Every subsequent paper either builds on it or reacts to it.
 
-Stage 5 — Occupancy (2-3 weeks)
+Stage 5 — BEV fusion and SparseDrive 
+
+BEVFusion (2022, MIT) — camera + LiDAR fusion in BEV
+SparseBEV (2023) — sparse attention in BEV
+SparseDrive (2024) — end-to-end autonomous driving, now you're ready
+
+Occupancy
 
 MonoScene (2022) — monocular occupancy, simplest formulation
 TPVFormer (2023) — tri-perspective view, read after MonoScene
@@ -24,13 +31,6 @@ SurroundOcc (2023) — multi-camera occupancy
 OccNet / Scene as Occupancy (2023) — defines the benchmark
 FlashOcc (2023) — efficient occupancy, good for deployment mindset
 SparseOcc (2024) — sparse representation, current direction
-
-Stage 6 — BEV fusion and SparseDrive (2 weeks)
-
-BEVFusion (2022, MIT) — camera + LiDAR fusion in BEV
-SparseBEV (2023) — sparse attention in BEV
-SparseDrive (2024) — end-to-end autonomous driving, now you're ready
-
 
 Parallel reading — do these alongside everything:
 
@@ -89,3 +89,62 @@ used to automatically improve the perception system using feedback from the
 downstream planner."
 In LSS, features are fused instead of detections
 
+1. The Core Problem: The "Ray" of Ambiguity
+
+When a 2D camera sees a red pixel, it knows the direction of that red object, but it doesn't know the distance. In 3D math, that pixel represents an infinite ray stretching out from the lens.
+
+    The Challenge: To move to the "Ego Frame" (3D), we need depth. But depth is "inherently ambiguous" in a single photo.
+
+2. The Solution: The "Frustum" Point Cloud
+
+Instead of guessing one depth, LSS creates a Frustum (a pyramid-shaped 3D volume) for every camera.
+
+    The Grid: For a single image of size H×W, they define a set of discrete depth "bins" D (e.g., every 1 meter from 0m to 100m).
+
+    The Points: They create D×H×W points.
+
+        If your image is 200×100 and you have 100 depth bins, you now have 2 million points in a 3D cloud for just one camera.
+
+    No Learning here: This part is just pure geometry. It’s like placing 100 transparent sheets of glass in front of the camera.
+
+3. The "Lift" Equation: cd=αdc (Eq. 1)
+
+This is how the model "fills" that 3D cloud with intelligence. For every single pixel p, the neural network (the ResNet/Backbone) predicts two things:
+
+    Context (c): A vector of features (C-channels). This represents "What is this?" (e.g., "This looks like a blue car door").
+
+    Depth Distribution (α): A list of probabilities for every depth bin. This represents "Where is this?" (e.g., "I am 10% sure it's at 5m, 80% sure it's at 10m, and 10% sure it's at 15m").
+
+The "Lift" Action: The feature at a specific depth d (cd) is simply the What (c) multiplied by the Where (αd).
+
+    If the probability (αd) is near zero for a certain depth, that part of the 3D cloud stays "empty."
+
+    If the probability is high, that part of the 3D cloud gets "filled" with the car door features.
+
+Splatting - Using pillars - squashes 3D point clouds into 2D BEV - then use 2D CNNs for reasoning. No LiDAR needed at any point to verify depth, verification done in 2D - cumsum trick
+
+Shooting - Picks lowest cost movement based on a library of template trajectories (made using K-means) - makes AI interpretable
+
+Sum pooling: Evidence: If Camera 1 sees "0.4 Car-ness" and Camera 2 sees "0.5 Car-ness" at the same spot, the Sum (0.9) tells the planner: "We are now very sure there is a car here because multiple sensors agree." An "Average" would just stay at ~0.45, losing that boost in confidence.
+
+
+nuScenes
+Every 2Hz, 0.5s - a snapshot is taken of all sensors - contains attributes - visibility, activity, pose
+Dataset also contains intermediate frames - used for tracking and prediction
+Annotations only done if hit by at least lidar or radar - so annotations are backed by real sensor data not just images
+
+Detection metric:
+AP:
+Instead of IOU - uses 2D center distance on ground plane - smaller objects give 0 IOU if off by even a little
+AP is calculated as area under precision-recall curve, clipping the first 10% on both axes as these are often noisy. Needs to be above 10% in both axes or the AP is 0
+AP is averaged over 0.5, 1, 2, 4 meters (stricter to more lenient)
+
+True positive metrics (after finding an object):
+Are interpretable - native units - if ATE is 0.5 - you were off by 0.5m
+10% recall-precision rule applies here as well - error set to 1.0
+
+Average Scale Error (ASE) is the 3D intersection over union (IOU) after aligning orientation and translation. Only punishes size errors and not positioning - decoupling errors.
+
+NDS:
+50% - mAP
+50% - sum of detection metric errors: ATE, ASE, AOE, AVE, AAE, 
