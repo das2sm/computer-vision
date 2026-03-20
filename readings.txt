@@ -7,30 +7,28 @@ Stage 3 — 2D detection to 3D detection
 
 DETR3D (2021) — 3D detection with transformers, key paper
 
-Stage 4 — BEV foundations
+Stage 4 — Foundations
 
 LSS / Lift Splat Shoot (2020) — how cameras project to BEV, read this carefully
 nuScenes dataset paper (2019) — read early, this is the benchmark for everything
 nuScenes revisited (2025)
-BEVFormer (2022) — the most important BEV paper, read twice
 
-Spend extra time on BEVFormer. Every subsequent paper either builds on it or reacts to it.
+Stage 5 — Temporal & BEV Evolution
 
-Stage 5 — BEV fusion and SparseDrive 
+BEVDet / BEVDet4D (2021–2022) — introduces BEV-based detection from multi-camera views; BEVDet4D adds time, helping you understand how motion and temporal consistency are incorporated before transformers
+BEVFormer — transformer-based BEV representation; introduces spatial + temporal attention, letting queries attend across both space and time (read multiple times, this is a major conceptual jump)
+
+Stage 6 — Occupancy & Sparse 3D Representation
+
+Occupancy Networks — replaces bounding boxes with a continuous function predicting whether a point in space is occupied (foundation for occupancy-based methods)
+TPVFormer (Tri-Perspective View) — represents 3D space using three 2D planes (XY, YZ, XZ) instead of a full voxel grid; key step toward efficient 3D reasoning
+SparseOcc (2024) — performs occupancy prediction sparsely by computing only on relevant voxels; combines query-based reasoning with efficient 3D representations, reducing computation while preserving detail
+
+SparseDrive 
 
 BEVFusion (2022, MIT) — camera + LiDAR fusion in BEV
 SparseBEV (2023) — sparse attention in BEV
 SparseDrive (2024) — end-to-end autonomous driving, now you're ready
-
-Occupancy
-
-MonoScene (2022) — monocular occupancy, simplest formulation
-TPVFormer (2023) — tri-perspective view, read after MonoScene
-VoxFormer (2023) — sparse voxel transformer
-SurroundOcc (2023) — multi-camera occupancy
-OccNet / Scene as Occupancy (2023) — defines the benchmark
-FlashOcc (2023) — efficient occupancy, good for deployment mindset
-SparseOcc (2024) — sparse representation, current direction
 
 Parallel reading — do these alongside everything:
 
@@ -148,3 +146,9 @@ Average Scale Error (ASE) is the 3D intersection over union (IOU) after aligning
 NDS:
 50% - mAP
 50% - sum of detection metric errors: ATE, ASE, AOE, AVE, AAE, 
+
+sMOTA - scaled Multi Object Tracking Accuracy - scaled so it lies between 0 and 1
+sAMOTA - 40 point threshold/recall point - range [0.1, 1] - interpolation average (increased from 11 in KITTI) - main metric for tracking
+
+TID - Time between object appearing and getting detected
+LGD - Longest duration of any detection gap in a track
