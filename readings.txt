@@ -152,3 +152,39 @@ sAMOTA - 40 point threshold/recall point - range [0.1, 1] - interpolation averag
 
 TID - Time between object appearing and getting detected
 LGD - Longest duration of any detection gap in a track
+
+
+BEVDet
+4 parts: Image-view encoder, view transformer (makes BEV), BEV encoder
+(extracts BEV features), head
+Head - Uses only 1st stage of CenterPoint - heatmap
+
+Custom data augmentation:
+Image view is augmented with matrix A, but this interferes with its 3D
+geometry as well in stage 2 (so further down, its shifted coordinates don't
+match with the ground truth). To reverse this, A^-1 is used
+
+BEV-space augmentation:
+Now, further augmentation is done to the BEV space due to difference in data
+between image and BEV in datasets like nuScenes. 
+Spatial consistency: both 2D BEV and 3D ground truth are converted - we want the head to learn here which is why it's not reversed as before 
+This is specific to BEVDet as it decouples attention from stages 1&2 and 3&4, so augmentations don't cause confusion 
+
+Scale-NMS:
+Regular NMS sucks in BEV space. Scale-NMS inflates boxes depending on class.
+For smaller boxes like for pedestrians, the box is temporarily inflated for
+the NMS calculation for bigger overlap. 
+
+
+BEVDet4D
+Main additions: 
+Extra encoder - processes concatenated maps from t-1 and t
+
+Feature alignment - shifts previous BEV map so that ego at t-1 goes to where
+the ego was at t (eg. move forward 5m, BEV is shifted back 5m)
+Static objects: go back to where they were
+Moving objects: appear as shifted in the direction they were going
+The extra encoder sees this displacement, thus we get velocity
+
+Bilinear interpolation problem
+
