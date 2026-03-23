@@ -155,8 +155,7 @@ LGD - Longest duration of any detection gap in a track
 
 
 BEVDet
-4 parts: Image-view encoder, view transformer (makes BEV), BEV encoder
-(extracts BEV features), head
+4 parts: Image-view encoder, view transformer (makes BEV, NOT attention transformer), BEV encoder (extracts BEV features), head
 Head - Uses only 1st stage of CenterPoint - heatmap
 
 Custom data augmentation:
@@ -168,7 +167,7 @@ BEV-space augmentation:
 Now, further augmentation is done to the BEV space due to difference in data
 between image and BEV in datasets like nuScenes. 
 Spatial consistency: both 2D BEV and 3D ground truth are converted - we want the head to learn here which is why it's not reversed as before 
-This is specific to BEVDet as it decouples attention from stages 1&2 and 3&4, so augmentations don't cause confusion 
+This is specific to BEVDet - using 2 kinds of augmentation - there's no attention mechanism between 2D and 3D or between the 4 different parts of BEVDet so this works
 
 Scale-NMS:
 Regular NMS sucks in BEV space. Scale-NMS inflates boxes depending on class.
@@ -186,5 +185,10 @@ Static objects: go back to where they were
 Moving objects: appear as shifted in the direction they were going
 The extra encoder sees this displacement, thus we get velocity
 
-Bilinear interpolation problem
+Bilinear interpolation problem: 
+Most accurate method: For getting the shifted map for t-1, shift the ENTIRE point cloud of t-1 to match where the ego was when looking from t. Then calculate the BEV map from there again (lift-splat). This is extremely slow. You cannot use the previous lookup table because that is specific to the position it was in, not the shifted position.
+Compromise: just shift the 2D BEV map from t-1 and combine it with t. Shifting here requires bilinear interpolation which can decrease precision.
+
+
+BEVFormer
 
