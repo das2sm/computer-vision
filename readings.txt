@@ -191,4 +191,62 @@ Compromise: just shift the 2D BEV map from t-1 and combine it with t. Shifting h
 
 
 BEVFormer
+BEV queries, spatial cross-attention, temporal self-attention
 
+SCA: 
+Uses deformable attention, modified from 2D to 3D perception
+BEV queries are lifted to a pillar, then reference points are sampled from this pillar, then projected to 2D views (through projection matrix of cameras). The cameras that capture the points in these 2D views are the hit views. Then, use deformable attention to grab features from around the pixels where the projections fell in the hit views
+
+TSA:
+BEVDet4D: Focuses on simplicity and speed. It aligns the past frame to the current ego-car position and stacks the features along the channel dimension. This allows the network to learn velocity by observing the "offset" between the same object across two concatenated frames.
+BEVFormer: Focuses on rich feature interaction. Even after alignment, it acknowledges that objects move independently of ego-motion. Its Temporal Self-Attention layer helps the model "look" for corresponding object features in the history even if they have shifted due to their own velocity. Can more effectively model long temporal dependency.
+
+Ironically, BEVFormer v2 went back to the BEVDet4D method of warp and concatentate.
+
+
+Occupancy Networks
+Takes p (3D coordinate) and x (photo)
+Neural network f_theta(p, x) -> probability that spot p in x is full
+
+Training:
+The Sampling (pij): For every object (like a car), the model picks K random points in a box around it.
+
+    Some points are inside the car (Occupancy = 1).
+
+    Some are in the air around it (Occupancy = 0).
+
+The Loss (LB): This is a standard Binary Cross-Entropy test.
+
+If the model says "0.1 (Empty)" for a point that is actually inside the car (oij=1), the "Loss" is high, and the model adjusts its weights (θ).
+
+The "Padding" Trick: They found that sampling just outside the box helps the model learn the "edges" of the object, so it doesn't get blurry.
+
+Generative Modeling:
+Imagine you have a blurry, partial photo of a car (like a car hidden behind a bush). A normal network might get confused. A Probabilistic Model (using a VAE - Variational Auto-Encoder structure) handles this by using a "Style Code" or Latent Vector (z).
+
+The Encoder (gψ): This "Summarizer" looks at a bunch of points and their occupancies and says, "Based on these clues, this looks like a Sedan." It compresses that "Sedan-ness" into a small vector z.
+
+The Mean (μ) and Sigma (σ): Instead of one fixed guess, it predicts a Distribution. It says, "I'm pretty sure it's a Sedan, but it could be a Hatchback."
+KL-Divergence: This is a mathematical "Penalty" that keeps the model's guesses organized. It forces the "Sedan Code" to stay within a reasonable range so the model doesn't start hallucinating impossible 3D shapes.
+
+Inference:
+MISE, Marching Cubes, Fast-Quadric-Mesh-Simplification, refine using second order/gradient information - double backprop.
+
+
+TPVFormer
+Point querying: For (x, y, z) in the real world, project to the 3 planes, sample at projections, aggreagte the features from those samples. Sampling - bilinear interpolation, aggregation - summation
+
+Cross-View Hybrid-Attention (CVHA) - Interactions among TPV queries - contextual information
+Image Cross-Attention (ICA) - TPV queries - aggregate visual info from image features using deformable attention
+
+Hybrid-Cross-Attention block (HCAB) - has CVHA and ICA - querying visual information effectively
+
+Hybrid-Attention block (HAB) - only CVHA - specializes in contextual information encoding - faster than HCAB as it doesn't look at images
+
+Image Cross-Attention: Same as SCA in BEVFormer - For a query (h, w), calculate the real world coordinates (x, y) using camera extrinsics/intrinsics, sample reference points coming "out" of that point, project these points onto the cameras, we get view hits again, use deformable attention on these - form updated TPV queries by summing up the sampled image features weighted by their attention weights
+
+CVHA: Also uses deformable attention, for a point in any plane, it looks at the other 2 planes at that "same point" and uses deformable attention to extract information
+
+TPVFormer is specifically a Hybrid Explicit-Implicit representation:
+Explicit: The three 2D Planes are explicit (they are physical arrays).
+Implicit: The relationship between those planes and the 3D points is implicit. You don't store 3D data; you store 2D data that implies 3D data through the summation and interpolation logic.
