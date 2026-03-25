@@ -250,3 +250,85 @@ CVHA: Also uses deformable attention, for a point in any plane, it looks at the 
 TPVFormer is specifically a Hybrid Explicit-Implicit representation:
 Explicit: The three 2D Planes are explicit (they are physical arrays).
 Implicit: The relationship between those planes and the 3D points is implicit. You don't store 3D data; you store 2D data that implies 3D data through the summation and interpolation logic.
+
+Limitation:
+Loss of Axis-Specific Resolution: Each TPV plane collapses 3D information along a specific axis. This results in overlap ambiguity: Multiple object instances located along the same collapsed axis may be merged into a single feature. It doesn't have a mechanism to say that this merged view is garbage and should be disregarded.
+
+
+SparseOcc
+Sparse voxel decoder, mask transformer, RayIoU
+
+Sparse Voxel Decoder: 
+Coarse-to-fine, only models non-free regions. Coarse voxel queries are equally distributed in 3D space, then upsampled to a 2x2 Rubik's cube, then pruned by threshold or top-k selection (used in code).
+
+Each layer receives voxel queries - 3D location in the real world (x, y, z) and content vector (C-dimensional) of features at that location. Self-attention is used to gather local and global features for the queries. Linear layer is used to generate 3D sampling offsets for each voxel query from the content vector- sample features from nearby coordinates to understand current voxel better. Then, 3D -> 2D for the reference points, intelligent weighing relevant features for the specific voxel (adaptive mixing).
+Note: Offsets are generated from the content vector. If you only used the 3D location, the model would always look at the exact same spot in the images regardless of what is actually there. By using the content vector, the model can dynamically adjust its "eyes" to focus on the most informative parts of the image (like boundaries or textures) to refine the occupancy prediction.
+
+Temporal modeling: Warp and concatenate doesn't work here due to inherent sparsity of 3D features in SparseOcc. Instead:
+Current Point: "I'm looking at this 3D spot right now."
+The Math: "Based on how I drove, this spot was there 0.5 seconds ago."
+The Grab: "Let me look at the old image at that there location and grab the features."
+The Mix: "Now I'll compare what I see now with what I saw then for that same physical spot." (uses adaptive mixing again)
+The current reference point is changed to match what the reference point was in the previous frame.
+
+Supervision: The model only grades the voxels it keeps (using BCE, as this is class-agnostic - only checks if they are occupied), and due to severe class imbalance, has higher loss for rarer objects
+
+Mask transformer - for semantic labeling:
+N queries - Qm - where, Qc - what.
+3 steps: Multi-head self attention (for interaction between different queries), mask-guided sparse sampling, adaptive mixing.
+
+Mask-guided sparse sampling - Initially, start with the coarse voxel mentioned before, then iteratively keep using the mask generated from the previous decoder layer. Pick random 3D points inside this mask, sample 2D images - extract features, bilinear interpolation, adaptive mixing. Keep refining from the previous mask. Temporal modeling using this is also easy.
+
+Prediction - 
+Uses queries for ->
+Class prediction: passed through linear classifier, sigmoid
+Mask prediction: passed through MLP -> mask embeddings - filters to search 3D space for the objects shape. Dot producted with sparse voxel embeddings - mask predictions. Important note: these then serve as mask queries for the next layer of mask-guided sparse sampling.
+
+Here is the absolute full flow, from the first 2D image pixel to the final 3D occupancy voxel.
+1. Stage 1: The "Scout" (Sparse Voxel Decoder)
+
+    Input: 2D Image Features from your ResNet/Swin backbone.
+
+    Process: It starts with a coarse grid (e.g., 25×25), upsamples by 2×, and uses Top-K Pruning to delete "Empty Air."
+
+    Output: A set of K Sparse Voxel Embeddings (V). These are the "surviving" 3D points that might contain objects.
+
+2. Stage 2: The "Artist" (Mask Transformer)
+
+This stage has L layers (usually 3 or 6).
+Layer 1 (The Initial Guess):
+
+    Input: N random "Object Queries" (Content Vectors Qc).
+
+    Initial Mask: Since there is no "previous" mask, it starts by looking at all K voxels from the Scout.
+
+    Sampling: It projects those 3D points to the images, grabs features, and "mixes" them into the Qc vectors (forms mask embeddings M, them M . V).
+
+    Prediction: It performs a Dot Product between the updated Qc and the K voxels.
+
+    Result: It produces the first Mask Query (Qm)—a bitmask of which voxels belong to "Object #1," "Object #2," etc.
+
+Layer 2 to L (The Refinement Loop):
+
+    Input: The Qm (Masks) and Qc from the previous layer.
+
+    Mask-Guided Sampling: Instead of looking at all K voxels, the model says: "Object #1 is inside this specific mask. Only sample 3D points from within that mask's volume."
+
+    Bilinear Interpolation: It projects those refined 3D points onto the 2D images.
+
+    Adaptive Mixing: It updates the Content Vector (Qc) with these "zoomed-in" high-res image features.
+
+    New Prediction: It does the Dot Product again (M⋅V).
+
+    Refined Mask: It outputs a sharper Qm for the next layer.
+
+3. Stage 3: The "Final Verdict" (Output)
+
+    Classification: The final Qc goes through a Linear Layer to say "This is a Bus."
+
+    Occupancy: The final Qm tells you exactly which of your K sparse voxels form that bus.
+
+Supervision: Missed detection - if objects are absent due to predicted sparse occupancy, ground truth for that is discarded. For false positives, categorize as "no object" category (as "background" label in Hungarian matching)
+
+Loss functions: Focal loss, DICE loss - if blobs overlap well, Mask loss - if fine detail voxels are right, Occ loss - for sparse voxel decoder - if the predicted sparse geometry is good.
+Loss only calculated for pairs matched with Hungarian Matching
