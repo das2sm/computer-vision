@@ -256,10 +256,11 @@ Loss of Axis-Specific Resolution: Each TPV plane collapses 3D information along 
 
 
 SparseOcc
-Sparse voxel decoder, mask transformer, RayIoU
+Sparse voxel decoder, mask transformer (unified segmentation - semantic, instance and panoptic concurrently), RayIoU
+Fully sparse - doesn't depend on dense 3D feature, no sparse-to-dense and global attention operations
 
 Sparse Voxel Decoder: 
-Coarse-to-fine, only models non-free regions. Coarse voxel queries are equally distributed in 3D space, then upsampled to a 2x2 Rubik's cube, then pruned by threshold or top-k selection (used in code).
+Coarse-to-fine, only models non-free regions. Coarse voxel queries are equally distributed in 3D space, then upsampled to a 2x2 Rubik's cube, then pruned by threshold (above a certain occupancy score) or top-k selection (used in code).
 
 Each layer receives voxel queries - 3D location in the real world (x, y, z) and content vector (C-dimensional) of features at that location. Self-attention is used to gather local and global features for the queries. Linear layer is used to generate 3D sampling offsets for each voxel query from the content vector- sample features from nearby coordinates to understand current voxel better. Then, 3D -> 2D for the reference points, intelligent weighing relevant features for the specific voxel (adaptive mixing).
 Note: Offsets are generated from the content vector. If you only used the 3D location, the model would always look at the exact same spot in the images regardless of what is actually there. By using the content vector, the model can dynamically adjust its "eyes" to focus on the most informative parts of the image (like boundaries or textures) to refine the occupancy prediction.
@@ -332,3 +333,13 @@ Supervision: Missed detection - if objects are absent due to predicted sparse oc
 
 Loss functions: Focal loss, DICE loss - if blobs overlap well, Mask loss - if fine detail voxels are right, Occ loss - for sparse voxel decoder - if the predicted sparse geometry is good.
 Loss only calculated for pairs matched with Hungarian Matching
+
+RayIoU:
+Problems with mIoU:
+Visible mask needed as some areas scanned by lidar are marked as free leading to label inconsistency. Visible mask is also bad as mIoU can be hacked by predicting thicker surfaces to get higher mIoU scores. Dense methods like BEVFormer can achieve this by using a visible mask - the area behind the surface lacks supervision. 
+Penalty is strict for thin surfaces resulting in IoU of zero.
+No temporal factor, only current moment is considered, reducing occupancy prediction to a depth estimation task.
+
+RayIoU: Emulates LiDAR behavior by projecting query rays into the predicted 3D occupancy volume. "For each query ray, we compute the distance it travels before intersecting any surface and retrieve the corresponding class label. We then apply the same procedure to the ground-truth occupancy to obtain the ground-truth depth and class label. In case a ray does not intersect with any voxel present in the ground truth, it will be excluded from the evaluation process."
+More forgiving: Query ray is a true positive if class labels coincide and the L1 error is less than a threshold value.
+Temporal casting: Better evaluates scene completion performance by making it so that the query ray can originate from the current, past or future. The Test: If your model "completed" the back of the bus correctly in the current frame, the future ray will hit it exactly where the future LiDAR says it should be.
