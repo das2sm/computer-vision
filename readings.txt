@@ -362,3 +362,5 @@ Selection: Collision-aware scoring for safety - select highest score as output
 
 Multi-stage learning: Learn detection and mapping first, freezing prediction/planning
 Then, learn everything together
+
+April 1st update: SparseDrive v2 just dropped LOL
