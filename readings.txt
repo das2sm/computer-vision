@@ -343,3 +343,22 @@ No temporal factor, only current moment is considered, reducing occupancy predic
 RayIoU: Emulates LiDAR behavior by projecting query rays into the predicted 3D occupancy volume. "For each query ray, we compute the distance it travels before intersecting any surface and retrieve the corresponding class label. We then apply the same procedure to the ground-truth occupancy to obtain the ground-truth depth and class label. In case a ray does not intersect with any voxel present in the ground truth, it will be excluded from the evaluation process."
 More forgiving: Query ray is a true positive if class labels coincide and the L1 error is less than a threshold value.
 Temporal casting: Better evaluates scene completion performance by making it so that the query ray can originate from the current, past or future. The Test: If your model "completed" the back of the bus correctly in the current frame, the future ray will hit it exactly where the future LiDAR says it should be.
+
+
+SparseDrive (also look into SafeDrive, FlowAD)
+Symmetric Sparse Perception, Parallel Motion Planner
+
+Symmetric Sprase Perception:
+Symmetric due to similar model structure for map and instance 
+Instance - Sparse detection - Temporal and non-temporal decoders. Temporal - track existing things, non-temporal - find new things
+Map - Polylines instead of anchors
+Tracking - uses ID assignment (Sparse4Dv3)
+
+Parallel Motion Planner:
+Ego instance initialization: done by using the smallest feature map (high level information about the scene) of the front camera (usually the most useful one)
+Note on setting velocity: Ground truth value is not used as, colloquially, this makes the model lazy. Instead, the model is asked to predict the current velocity as an auxiliary task for better syncing between the planning and perception module 
+Spatial temporal interactions: "Note that in temporal cross-attention of sparse perception module, the instances of current frame interact with all temporal instances, which we name as scene-level interaction. While for agent-temporal cross-attention here, we adopt instance-level interaction to make each instance focus on history information of itself."
+Selection: Collision-aware scoring for safety - select highest score as output
+
+Multi-stage learning: Learn detection and mapping first, freezing prediction/planning
+Then, learn everything together
